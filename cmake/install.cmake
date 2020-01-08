@@ -117,6 +117,15 @@ configure_file(protobuf-module.cmake.in
   ${CMAKE_INSTALL_CMAKEDIR}/protobuf-module.cmake @ONLY)
 configure_file(protobuf-options.cmake
   ${CMAKE_INSTALL_CMAKEDIR}/protobuf-options.cmake @ONLY)
+  
+install(FILES 
+  ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_CMAKEDIR}/protobuf-config.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_CMAKEDIR}/protobuf-config-version.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_CMAKEDIR}/protobuf-module.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_INSTALL_CMAKEDIR}/protobuf-options.cmake
+  DESTINATION "lib/cmake/protobuf${ver}"
+  COMPONENT protobuf-export
+  )
 
 # Allows the build directory to be used as a find directory.
 
@@ -133,7 +142,7 @@ else (protobuf_BUILD_PROTOC_BINARIES)
 endif (protobuf_BUILD_PROTOC_BINARIES)
 
 install(EXPORT protobuf-targets
-  DESTINATION "${CMAKE_INSTALL_CMAKEDIR}"
+  DESTINATION "lib/cmake/protobuf${ver}"
   NAMESPACE protobuf::
   COMPONENT protobuf-export)
 

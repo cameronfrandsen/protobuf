@@ -75,6 +75,6 @@ if(MSVC AND protobuf_BUILD_SHARED_LIBS)
 endif()
 set_target_properties(libprotobuf-lite PROPERTIES
     VERSION ${protobuf_VERSION}
-    OUTPUT_NAME ${LIB_PREFIX}protobuf-lite
+    OUTPUT_NAME ${LIB_PREFIX}protobuf-lite${ver}
     DEBUG_POSTFIX "${protobuf_DEBUG_POSTFIX}")
 add_library(protobuf::libprotobuf-lite ALIAS libprotobuf-lite)
